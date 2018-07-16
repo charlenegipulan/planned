@@ -13,3 +13,62 @@
  *= require_tree .
  *= require_self
  */
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.left_panel {
+    width: 20%;
+    background-color: gray;
+    height: 800px;
+}
+
+.right_panel {
+    width: 80%;
+    height: 800px%;
+}
+
+.goals_panel {
+    height: 400px;
+    background-color: green;
+}
+
+.priorities_panel {
+    height: 300px;
+    background-color: pink;
+}
+
+.right_panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.right_panel-top {
+    height: 130px;
+    background-color: purple;
+}
+
+.right_panel-middle {
+    height: 440px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.sunday_panel, .monday_panel, .tuesday_panel, .wednesday_panel, .thursday_panel, .friday_panel, .saturday_panel {
+    width: 14.5%;
+    background-color: orange;
+}
+
+.right_panel-bottom {
+    height: 230px;
+    background-color: peachpuff;
+    display: flex;
+    flex-direction: row;
+}
+
+.work-to-do_panel, .personal-to-do_panel, .ideas_panel, .notes_panel {
+    width: 25%;
+    background-color: peachpuff;
+}
