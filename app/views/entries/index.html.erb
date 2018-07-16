@@ -10,8 +10,7 @@
     <div class='left_panel'>
 
         <div class='month_panel'>
-            <% @date = Date.today  %>  
-            <%= @date.strftime("%B")%>
+            <%= @start_date.strftime("%B")%>
         </div>
 
         <div class='goals_panel'>
@@ -28,7 +27,9 @@
     <div class='right_panel'>
 
         <div class='right_panel-top'>
-        <a class='button' href='/entries/new'> Add Entry </a>
+            <a class='button' href='/entries/new'> Add Entry </a>
+            <%= link_to 'previous week', entries_path(offset: @offset - 1) %>
+            <%= link_to 'next week', entries_path(offset: @offset + 1) %>
 
         </div>
 

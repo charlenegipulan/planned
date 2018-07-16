@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect_to :controller => 'entries', :action => 'index', notice: 'Logged In!'
+            redirect_to entries_path, notice: 'Logged In!'
         else
             flash.now.alert = "Invalid login credentials - try again!"
             render :new
