@@ -1,33 +1,60 @@
-</h1> entries - weekly view </h1>
-
-<br>
-<br>
-
-
 <div class='flex-container'>
 
 
     <div class='left_panel'>
 
         <div class='month_panel'>
-            <%= @start_date.strftime("%B")%>
+           <h1 class='month_text'> <%= @start_date.strftime("%B")%> </h1>
         </div>
 
         <div class='goals_panel'>
-            <h1> goals </h1>
-            <% entries = @entries.select {|e| e.category.name == 'goal'} %>
-            <% entries.each do |e| %>
-            <p><%= e.content %> </p>
-            <% end %>
+            <div class='category_word_panel'>
+                <h2 class='category_text'> GOALS </h2>
+            </div>
 
-        </div>
+            <div class='entries_panel-goals'>
+                <% entries = @entries.select {|e| e.category.name == 'goal'} %>
+                <% entries.each do |e| %>
+                <p><%= e.content %> </p>
+                <% end %>
+            </div>
+
+            <div class='form_panel'>
+                <%= form_for @entry do |f| %>
+                    <%= hidden_field_tag :offset, @offset %>
+                    <%= hidden_field_tag :date, @start_date %>
+                    <div>
+                        <%= f.text_field :content %>
+                        <%= hidden_field_tag :category_id, @goal_id %>
+                        <%= f.submit "Add Entry" %>
+                    </div>
+                <% end %>
+            </div>
+       </div>
 
         <div class='priorities_panel'>
-            <h1> Priorities </h1>
-            <% entries = @entries.select {|e| e.category.name == 'priority'} %>
-            <% entries.each do |e| %>
-            <p><%= e.content %> </p>
-            <% end %>
+            <div class='category_word_panel'>
+                <h2 class='category_text'> PRIORITIES </h2>
+            </div>
+
+            <div class='entries_panel-priorities'>
+                <% entries = @entries.select {|e| e.category.name == 'priority'} %>
+                <% entries.each do |e| %>
+                <p><%= e.content %> </p>
+                <% end %>
+            </div>
+
+            <div class='form_panel'>
+                <%= form_for @entry do |f| %>
+                    <%= hidden_field_tag :offset, @offset %>
+                    <%= hidden_field_tag :date, @start_date %>
+                    <div>
+                        <%= f.text_field :content %>
+                        <%= hidden_field_tag :category_id, @priority_id %>
+                        <%= f.submit "Add Entry" %>
+                    </div>
+                <% end %>
+            </div>
         </div>
 
 
@@ -37,25 +64,35 @@
 
         <div class='right_panel-top'>
             <div class='top_right_panel-one'>
-                <a class='button' href='/entries/new'> Add Entry </a>
-                <%= link_to 'previous week', entries_path(offset: @offset - 1) %>
-                <h2> Week of </h2> <%= @start_date.strftime("%B") %> 
-                <%= @start_date.strftime("%d") %> 
-                to 
-                <%= @end_date.strftime("%d") %>
-                <%= link_to 'next week', entries_path(offset: @offset + 1) %>
+                <div class='left_arrow_panel'>
+                    <%= link_to '<', entries_path(offset: @offset - 1) %>
+                </div>
+
+                <div class='date_panel'>
+                    <div class='week_of_panel'> 
+                        <h2> Week of </h2> 
+                    </div>
+
+                    <div class='current_week_panel'>
+                        <div class='month_panel'>
+                            <h2> <%= @start_date.strftime("%B") %> </h2>
+                        </div>
+                        <div class='date_from_panel'>
+                        <h2> <%= @start_date.strftime("%d") %> </h2>
+                        </div>
+                        <h3>to</h3> 
+                        <div class='date_to_panel'>
+                        <h2> <%= @end_date.strftime("%d") %> </h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='right_arrow_panel'>
+                    <%= link_to '>', entries_path(offset: @offset + 1) %>
+                </div>
             </div>
 
             <div class='top_right_panel-two'>
-                <%= form_for @entry do |f| %>
-                    <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %>
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= f.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true %>
-                        <%= f.submit "Add Entry" %>
-                    </div>
-                <% end %>
 
             </div>
 
@@ -66,122 +103,208 @@
 
 
             <div class='monday_panel'>
-                <h1>Monday</h1>
-                <%= @start_date.strftime("%d") %>
-                <% @mon.each do |e| %>
-                    <p><%= e.content %></p>
-                <% end %>
+                <div class='day_word_panel'>
+                    <div class='date_container'>
+                    <%= @start_date.strftime("%d") %>
+                    </div>
+                    <div class='day_container'>
+                    <h1 class='days'>Monday</h1>
+                    </div>
+                </div>
+                
+                <div class='entries_panel-days'>
+                    <% @mon.each do |e| %>
+                        <p><%= e.content %></p>
+                    <% end %>
+                </div>
 
-                <%= form_for @entry do |f| %>
-                    <!-- <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %> -->
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date %>
                     <div>
                         <%= f.text_field :content %>
+                        <%= hidden_field_tag :category_id, @cal_cat_id %>
                         <%= f.submit "Add Entry" %>
                     </div>
-                <% end %>
+                    <% end %>
+                </div>
             </div>
 
             <div class='tuesday_panel'>
-                <h1>Tuesday</h1>
-                <%= @start_date.advance(days: 1).strftime("%d") %>
-                <% @tue.each do |e| %>
-                    <p><%= e.content %></p>
-                <% end %>
-
-                <%= form_for @entry do |f| %>
-                    <!-- <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %> -->
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= f.submit "Add Entry" %>
+                <div class='day_word_panel'>
+                    <div class='date_container'>
+                        <%= @start_date.advance(days: 1).strftime("%d") %>
                     </div>
-                <% end %>
+                    <div class='day_container'>
+                        <h1 class='days'>Tuesday</h1>
+                    </div>
+                </div>    
+
+                <div class='entries_panel-days'>
+                    <% @tue.each do |e| %>
+                        <p><%= e.content %></p>
+                    <% end %>
+                </div>
+
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date.advance(days: 1) %>
+                            <div>
+                                <%= f.text_field :content %>
+                                <%= hidden_field_tag :category_id, @cal_cat_id %>
+                                <%= f.submit "Add Entry" %>
+                            </div>
+                    <% end %>
+                </div>
             </div>
 
             <div class='wednesday_panel'>
-                <h1>Wednesday</h1>
-                <%= @start_date.advance(days: 2).strftime("%d") %>
-                <% @wed.each do |e| %>
-                    <p><%= e.content %></p>
-                <% end %>
-                
-                <%= form_for @entry do |f| %>
-                    <!-- <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %> -->
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= f.submit "Add Entry" %>
+                <div class='day_word_panel'>
+                    <div class='date_container'>
+                        <%= @start_date.advance(days: 2).strftime("%d") %>
                     </div>
-                <% end %>
+                    <div class='day_container'>
+                        <h1 class='days'>Wednesday</h1>
+                    </div>
+                </div>
+
+                <div class='entries_panel-days'>
+                    <% @wed.each do |e| %>
+                        <p><%= e.content %></p>
+                    <% end %>
+                </div>
+
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date.advance(days: 2) %>
+                            <div>
+                                <%= f.text_field :content %>
+                                <%= hidden_field_tag :category_id, @cal_cat_id %>
+                                <%= f.submit "Add Entry" %>
+                            </div>
+                    <% end %>
+                </div>
+
             </div>
 
             <div class='thursday_panel'>
-                <h1>Thursday</h1>
-                <%= @start_date.advance(days: 3).strftime("%d") %>
-                <% @thu.each do |e| %>
-                    <p><%= e.content %></p>
-                <% end %>
-
-                <%= form_for @entry do |f| %>
-                    <!-- <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %> -->
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= f.submit "Add Entry" %>
+                <div class='day_word_panel'>
+                    <div class='date_container'>
+                        <%= @start_date.advance(days: 3).strftime("%d") %>
                     </div>
-                <% end %>
+                    <div class='day_container'>
+                        <h1 class='days'>Thursday</h1>
+                    </div>
+                </div>
+
+                <div class='entries_panel-days'>
+                    <% @thu.each do |e| %>
+                        <p><%= e.content %></p>
+                    <% end %>
+                </div>
+
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date.advance(days: 3) %>
+                            <div>
+                                <%= f.text_field :content %>
+                                <%= hidden_field_tag :category_id, @cal_cat_id %>
+                                <%= f.submit "Add Entry" %>
+                            </div>
+                    <% end %>
+                </div>
             </div>
 
             <div class='friday_panel'>
-                <h1>Friday</h1>
-                <%= @start_date.advance(days: 4).strftime("%d") %>
-                <% @fri.each do |e| %>
-                    <p><%= e.content %></p>
-                <% end %>
-
-                <%= form_for @entry do |f| %>
-                    <!-- <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %> -->
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= f.submit "Add Entry" %>
+                <div class='day_word_panel'>
+                    <div class='date_container'>
+                        <%= @start_date.advance(days: 4).strftime("%d") %>
                     </div>
-                <% end %>
+                    <div class='day_container'>
+                        <h1 class='days'>Friday</h1>
+                    </div>
+                </div>
+
+                <div class='entries_panel-days'>
+                    <% @fri.each do |e| %>
+                        <p><%= e.content %></p>
+                    <% end %>
+                </div>
+
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date.advance(days: 4) %>
+                            <div>
+                                <%= f.text_field :content %>
+                                <%= hidden_field_tag :category_id, @cal_cat_id %>
+                                <%= f.submit "Add Entry" %>
+                            </div>
+                    <% end %>
+                </div>
             </div>
 
             <div class='saturday_panel'>
-                <h1>Saturday</h1>
-                <%= @start_date.advance(days: 5).strftime("%d") %>
-                <% @sat.each do |e| %>
-                    <p><%= e.content %></p>
-                <% end %>
-
-                <%= form_for @entry do |f| %>
-                    <!-- <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %> -->
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= f.submit "Add Entry" %>
+                <div class='day_word_panel'>
+                    <div class='date_container'>
+                        <%= @start_date.advance(days: 5).strftime("%d") %>
                     </div>
-                <% end %>
+                    <div class='day_container'>
+                        <h1 class='days'>Saturday</h1>
+                    </div>
+                </div>
+
+                <div class='entries_panel-days'>   
+                    <% @sat.each do |e| %>
+                        <p><%= e.content %></p>
+                    <% end %>
+                </div>
+
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date.advance(days: 5) %>
+                            <div>
+                                <%= f.text_field :content %>
+                                <%= hidden_field_tag :category_id, @cal_cat_id %>
+                                <%= f.submit "Add Entry" %>
+                            </div>
+                    <% end %>
+                </div>
             </div>
 
             <div class='sunday_panel'>
-                <h1>Sunday</h1>
-                <%= @start_date.advance(days: 6).strftime("%d") %>
-                <% @sun.each do |e| %>
-                    <p><%= e.content %></p>
-                <% end %>
-
-                <%= form_for @entry do |f| %>
-                    <!-- <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %> -->
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= f.submit "Add Entry" %>
+                <div class='day_word_panel'>
+                    <div class='date_container'>
+                        <%= @start_date.advance(days: 6).strftime("%d") %>
                     </div>
-                <% end %>
+                    <div class='day_container'>
+                        <h1 class='days'>Sunday</h1>
+                    </div>
+                </div>
+
+                <div class='entries_panel-days'>
+                    <% @sun.each do |e| %>
+                        <p><%= e.content %></p>
+                    <% end %>
+                </div>
+
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date.advance(days: 6) %>
+                            <div>
+                                <%= f.text_field :content %>
+                                <%= hidden_field_tag :category_id, @cal_cat_id %>
+                                <%= f.submit "Add Entry" %>
+                            </div>
+                    <% end %>
+                </div>
+
             </div>
 
 
@@ -191,40 +314,106 @@
 
 
             <div class='work-to-do_panel'>
-                <h1> Work-to-do </h1>
-                <% entries = @entries.select {|e| e.category.name == 'work-to-do'} %>
-                <% entries.each do |e| %>
-                <p><%= e.content %> </p>
+                <div class='category_word_panel'>
+                    <h2 class='category_text'> WORK TO-DO's </h2>
+                </div>
+
+                <div class='entries_panel-categories'>
+                    <% entries = @entries.select {|e| e.category.name == 'work-to-do'} %>
+                    <% entries.each do |e| %>
+                    <p><%= e.content %> </p>
+                    <% end %>
+                </div>
+
+            <div class='form_panel'>
+                <%= form_for @entry do |f| %>
+                    <%= hidden_field_tag :offset, @offset %>
+                    <%= hidden_field_tag :date, @start_date %>
+                    <div>
+                        <%= f.text_field :content %>
+                        <%= hidden_field_tag :category_id, @work_to_do_id %>
+                        <%= f.submit "Add Entry" %>
+                    </div>
                 <% end %>
-
-
             </div>
+                
+        </div>
 
             <div class='personal-to-do_panel'>
-                <h1> Personal-to-do </h1>
-                <% entries = @entries.select {|e| e.category.name == 'personal-to-do'} %>
-                <% entries.each do |e| %>
-                    <p><%= e.content %> </p>
+                <div class='category_word_panel'>
+                    <h2 class='category_text-personal'> PERSONAL TO DO's </h2>
+                </div>
+
+                <div class='entries_panel-categories'>
+                    <% entries = @entries.select {|e| e.category.name == 'personal-to-do'} %>
+                    <% entries.each do |e| %>
+                        <p><%= e.content %> </p>
+                    <% end %>
+                </div>
+
+            <div class='form_panel'>
+                <%= form_for @entry do |f| %>
+                    <%= hidden_field_tag :offset, @offset %>
+                    <%= hidden_field_tag :date, @start_date %>
+                    <div>
+                        <%= f.text_field :content %>
+                        <%= hidden_field_tag :category_id, @personal_to_do_id %>
+                        <%= f.submit "Add Entry" %>
+                    </div>
                 <% end %>
+            </div>
             </div>
 
             <div class='ideas_panel'>
-                <h1> Ideas </h1>
-                <% entries = @entries.select {|e| e.category.name == 'idea'} %>
-                <% entries.each do |e| %>
-                <p><%= e.content %> </p>
+                <div class='category_word_panel'>
+                    <h2 class='category_text'> IDEAS </h2>
+                </div>
+
+                <div class='entries_panel-categories'>
+                    <% entries = @entries.select {|e| e.category.name == 'idea'} %>
+                    <% entries.each do |e| %>
+                    <p><%= e.content %> </p>
+                    <% end %>
+                </div>
+
+            <div class='form_panel'>
+                <%= form_for @entry do |f| %>
+                    <%= hidden_field_tag :offset, @offset %>
+                    <%= hidden_field_tag :date, @start_date %>
+                    <div>
+                        <%= f.text_field :content %>
+                        <%= hidden_field_tag :category_id, @idea_id %>
+                        <%= f.submit "Add Entry" %>
+                    </div>
                 <% end %>
+            </div>
 
             </div>
 
             <div class='notes_panel'>
-                <h1> Notes </h1>
-                <% entries = @entries.select {|e| e.category.name == 'note'} %>
-                <% entries.each do |e| %>
-                <p><%= e.content %> </p>
-                <% end %>
-            </div>
+                <div class='category_word_panel'>
+                    <h2 class='category_text'> NOTES </h2>
+                </div>
 
+                <div class='entries_panel-categories'>
+                    <% entries = @entries.select {|e| e.category.name == 'note'} %>
+                    <% entries.each do |e| %>
+                    <p><%= e.content %> </p>
+                    <% end %>
+                </div>
+
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date %>
+                        <div>
+                            <%= f.text_field :content %>
+                            <%= hidden_field_tag :category_id, @note_id %>
+                            <%= f.submit "Add Entry" %>
+                        </div>
+                     <% end %>
+                </div>
+            </div>
         </div>
 
 
