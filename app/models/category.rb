@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
 
-    belongs_to :entry
-    has_many :entries
+    has_many :entries, dependent: :destroy
+
 end

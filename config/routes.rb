@@ -4,11 +4,12 @@ Rails.application.routes.draw do
 
     resources :users, only: [:new, :create]
     resources :sessions, only: [:new, :create, :destroy]
+    resources :entries
     get '/login', to: 'sessions#new' #logging in
     get '/logout', to: 'sessions#destroy' #logging out
 
     get '/entries', to: 'entries#index' ##to weekly view
     get '/entries/new', to: 'entries#new' ## to add new entry page
 
-
+    
 end

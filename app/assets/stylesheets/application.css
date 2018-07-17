@@ -46,8 +46,19 @@
 
 .right_panel-top {
     height: 130px;
+    display: flex;
+    flex-direction: row;
+}
+
+.top_right_panel-one {
     background-color: purple;
 }
+
+.top_right_panel-two {
+    background-color: lightblue;
+    width: 400px;
+}
+
 
 .right_panel-middle {
     height: 440px;
@@ -72,3 +83,4 @@
     width: 25%;
     background-color: peachpuff;
 }
+
