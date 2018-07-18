@@ -7,9 +7,5 @@ Rails.application.routes.draw do
     resources :entries
     get '/login', to: 'sessions#new' #logging in
     get '/logout', to: 'sessions#destroy' #logging out
-
-    get '/entries', to: 'entries#index' ##to weekly view
-    get '/entries/new', to: 'entries#new' ## to add new entry page
-
     
 end

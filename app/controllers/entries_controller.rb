@@ -12,6 +12,7 @@ class EntriesController < ApplicationController
         @personal_to_do_id = Category.find_by(name: 'personal-to-do').id
         @idea_id = Category.find_by(name: 'idea').id
         @note_id = Category.find_by(name: 'note').id
+
         @mon = current_user.entries.where(category_id: @cal_cat_id, entry_date: @start_date)
         @tue = current_user.entries.where(category_id: @cal_cat_id, entry_date: @start_date.advance(days: 1))
         @wed = current_user.entries.where(category_id: @cal_cat_id, entry_date: @start_date.advance(days: 2))
@@ -19,12 +20,30 @@ class EntriesController < ApplicationController
         @fri = current_user.entries.where(category_id: @cal_cat_id, entry_date: @start_date.advance(days: 4))
         @sat = current_user.entries.where(category_id: @cal_cat_id, entry_date: @start_date.advance(days: 5))
         @sun = current_user.entries.where(category_id: @cal_cat_id, entry_date: @start_date.advance(days: 6))
-        @entries = current_user.entries.where('entry_date BETWEEN ? AND ?', @start_date, @end_date).order(:entry_date)
+
+        @entries = current_user.entries.where('entry_date BETWEEN ? AND ?', @start_date, @end_date).order(:entry_date, :created_at)
         @entry = Entry.new
     end
 
     def create
         current_user.entries.create(content: params[:entry][:content], category_id: params[:category_id], entry_date: params[:date])
+        redirect_to entries_path(offset: params[:offset])
+    end
+
+    def destroy
+        Entry.find(params[:id]).destroy
+        redirect_to entries_path(offset: params[:offset])
+    end
+
+    def edit
+        @entry = Entry.find(params[:id])
+        @offset = params[:offset]
+    end
+
+    def update
+        @entry = Entry.find(params[:id])
+        @entry.content = params[:entry][:content]
+        @entry.save
         redirect_to entries_path(offset: params[:offset])
     end
 
