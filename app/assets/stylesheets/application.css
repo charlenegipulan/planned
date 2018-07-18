@@ -20,6 +20,11 @@
     color: gray;
  }
 
+ body {
+    background: url('background.jpg') center no-repeat;
+    background-size: cover;
+    height: 870px;
+}
 
 
 

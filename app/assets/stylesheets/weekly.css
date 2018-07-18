@@ -1,11 +1,6 @@
-html, body {
-    background-color: white;
-}
-
 .flex-container {
     display: flex;
     flex-direction: row;
-    background-color: white;
     height: 840px;
     padding-right: 5px;
 }
@@ -17,7 +12,7 @@ p {
 
 nav {
     text-align: right;
-    background-color: rgba(225, 224, 223);
+    background-color: rgb(225, 224, 223);
     height: 30px;
 }
 
@@ -78,7 +73,7 @@ nav {
 
 .sunday_panel, .monday_panel, .tuesday_panel, .wednesday_panel, .thursday_panel, .friday_panel, .saturday_panel {
     width: 14.5%;
-    background-color: #D5D4D4;
+    background-color: rgba(253, 253, 253, .5);
     text-align: center;
     margin: 3px;
     display: flex;
