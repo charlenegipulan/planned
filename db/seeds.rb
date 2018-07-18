@@ -7,7 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Entry.destroy_all
 Category.destroy_all
+User.destroy_all
+
+User.create(email: 'dummy@email.com', password: 'password123', name: 'test_user')
+
 # Category.all.each { |c| c.destroy }
 # Category.all.each do |category|
 #     category.destroy
@@ -23,7 +28,6 @@ Category.create([
     {name: 'note'}
 ])
 
-Entry.delete_all
 Entry.create([
     {content: 'go to class at 9 am', category_id: Category.first.id, entry_date: Date.today, user: User.first}, 
     {content: 'work out', category_id: Category.fifth.id, entry_date: Date.today, user: User.first}, 
