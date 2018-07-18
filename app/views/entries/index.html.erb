@@ -27,7 +27,7 @@
 
             <div class='entries_panel-goals'>
                 <% entries = @entries.select {|e| e.category.name == 'goal'} %>
-                <% entries.each do |e| %>
+                <font size='15px'><% entries.each do |e| %></font>
                 <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                 <% end %>
             </div>
@@ -90,6 +90,7 @@
                 <div class='date_panel'>
                     <div class='week_of_panel'> 
                         <h2> Week of </h2> 
+                        <hr>
                     </div>
 
                     <div class='current_week_panel'>
