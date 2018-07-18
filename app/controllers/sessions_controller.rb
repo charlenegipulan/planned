@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             redirect_to entries_path, notice: 'Logged In!'
         else
             flash.now.alert = "Invalid login credentials - try again!"
-            render :new
+            redirect_to root_path
         end
     end
 

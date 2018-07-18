@@ -13,3 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( landing.css )
 Rails.application.config.assets.precompile += %w( weekly.css )
+Rails.application.config.assets.precompile += %w( reflections.css )

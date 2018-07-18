@@ -1,0 +1,221 @@
+<%= stylesheet_link_tag 'reflections.css' %>
+
+<nav>
+      <div>
+      <% if current_user %>
+        Welcome, <%= current_user.name %>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_path %>
+      <% end %>
+    </div>
+      </nav>
+
+
+
+<div class='flex-container'>
+
+
+    
+    <div class='left_panel'>
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> My top 10 achievements this month</h1>
+            <div class='form_panel'>
+                <%= form_for @reflection do |f| %>
+                    <%= f.text_area :top10 %>
+                    <%= f.submit "Add Entry" %>
+                <% end %>
+            </div>
+        </div>
+
+
+        <div class='top_10_panel'>
+            
+            text 
+            text
+        </div>
+
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> What I learned this month </h1>
+        </div>
+        <div class='learnings_panel'>
+            text 
+            text
+        </div>
+
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> New things I was introduced to </h1>
+        </div>
+        <div class='new_things_panel'>
+            text
+            text
+        </div>
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> People who I learned from and inspired me: </h1>
+        </div>
+        <div class='people_inspiration_panel'>
+            text
+            text
+        </div>
+
+    </div>
+
+    <div class='middle_panel'>
+
+        <div class='middle_top_panel'>
+            <div>
+                <h1 class='month_text'> <%= @start_date.strftime("%B")%> </h1>
+            </div>
+
+            <div>
+                <h1 class='reflections_text'> Reflections </h1>
+            </div>
+                
+
+        </div>
+        
+
+
+        <div class='checklist_text_panel'>
+            <h2> monthly checklist </h1>
+            <hr>
+        </div>
+
+        <div class='middle_middle_panel'>
+
+            <div class='self_care_panel'>
+            <h2> Self-care</h2>
+                <ul>
+                    <li> Excercised</li>
+                    <li> Spent time in nature </li>
+                    <li> Ate and drank healthy  </li>
+                    <li> Practiced mindfulness  </li>
+                    <li> Meditated and pray </li>
+                    <li> Spread positivity </li>
+                </ul>
+            </div>
+
+            <div class='check_box_panel'>
+                <br>
+                <br>
+                <br>
+                <br>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %> 
+
+            </div>
+
+            <div class='giving_back_panel'>
+            <h2> Giving back </h2>
+                <ul>
+                    <li> Complimented others </li>
+                    <li> Gave somebody a hug </li>
+                    <li> Did charity work </li>
+                    <li> Said 'I love you' to loved ones   </li>
+                    <li> Practiced acts of kindness  </li>
+                    <li> Meditated and prayed  </li>
+                </ul>
+            </div>
+            <div class='check_box_panel'>
+                <br>
+                <br>
+                <br>
+                <br>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %> 
+            </div>
+
+            <div class='entertainment_panel'>
+            <h2> Entertainment </h2>
+                <ul>
+                    <li> Spent time with good friends</li>
+                    <li> Played with kids</li>
+                    <li> Met new people </li>
+                    <li> Watched funny movies </li>
+                    <li> Got a massage </li>
+                    <li> Played a game</li>
+                    <li> Made something artistic</li>
+                </ul>
+            </div>
+            <div class='check_box_panel'>
+                <br>
+                <br>
+                <br>
+                <br>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %>
+                <%= check_box_tag(:nil) %> 
+            </div>
+
+        </div>
+
+        <div class='middle_bottom_panel'>   
+
+            <div class='goals_achieved_panel'>
+                <h2> Goals achieved </h2>
+                <hr>
+            </div>
+
+            <div class='rewards_achieved_panel'>
+                <h2> Rewards for achieving </h2>
+                <hr>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class='right_panel'>
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> What I can do to improve: </h1>
+        </div>
+        <div class='improvements_panel'>
+
+            text 
+            text
+        </div>
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> How did I progress: </h1>
+        </div>
+        <div class='progression_panel'>
+            test
+            test
+        </div>
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> My biggest obstacles:</h1>
+        </div>
+        <div class='obstacles_panel'>
+            test
+            test
+        </div>
+
+        <div class='category_panel'>
+            <h1 class='reflections_cat-text'> What went wrong: </h1>
+        </div>
+        <div class='wrongs_panel'>
+            test
+            test
+        </div>
+
+    </div>
+        
+</div>
