@@ -1,3 +1,16 @@
+<%= stylesheet_link_tag 'weekly.css' %>
+
+<nav>
+      <div>
+      <% if current_user %>
+        Welcome, <%= current_user.name %>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_path %>
+      <% end %>
+    </div>
+      </nav>
 <div class='flex-container'>
 
 
@@ -15,8 +28,7 @@
             <div class='entries_panel-goals'>
                 <% entries = @entries.select {|e| e.category.name == 'goal'} %>
                 <% entries.each do |e| %>
-                <p><%= e.content %> <%= link_to 'Edit', edit_entry_path(e, offset: @offset) %> <%= link_to 'X', entry_path(e, offset: @offset), method: :delete %> </p>
-                
+                <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                 <% end %>
             </div>
 
@@ -41,7 +53,7 @@
             <div class='entries_panel-priorities'>
                 <% entries = @entries.select {|e| e.category.name == 'priority'} %>
                 <% entries.each do |e| %>
-                <p><%= e.content %> </p>
+                <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                 <% end %>
             </div>
 
@@ -66,8 +78,13 @@
         <div class='right_panel-top'>
             <div class='top_right_panel-one'>
                 <div class='left_arrow_panel'>
-                    <%= link_to '<<', entries_path(offset: @offset - 5) %>
+                    <h4>
+                    <%= link_to '<<<', entries_path(offset: @offset - 52) %>
+                    &nbsp;&nbsp;
+                    <%= link_to '<<', entries_path(offset: @offset - 4) %>
+                    &nbsp;&nbsp;
                     <%= link_to '<', entries_path(offset: @offset - 1) %>
+                    </h4>
                 </div>
 
                 <div class='date_panel'>
@@ -80,18 +97,25 @@
                             <h2> <%= @start_date.strftime("%B") %> </h2>
                         </div>
                         <div class='date_from_panel'>
-                        <h2> <%= @start_date.strftime("%d") %> </h2>
+                            <h2 class='current_date'> <%= @start_date.strftime("%d") %> </h2>
                         </div>
-                        <h3>to</h3> 
+                        &nbsp;&nbsp;&nbsp;
+                        <h2 class='to'>to</h2>
+                        &nbsp;&nbsp;&nbsp;
                         <div class='date_to_panel'>
-                        <h2> <%= @end_date.strftime("%d") %> </h2>
+                            <h2> <%= @end_date.strftime("%d") %> </h2>
                         </div>
                     </div>
                 </div>
 
                 <div class='right_arrow_panel'>
+                    <h4>
                     <%= link_to '>', entries_path(offset: @offset + 1) %>
+                    &nbsp;&nbsp;
                     <%= link_to '>>', entries_path(offset: @offset + 4) %>
+                    &nbsp;&nbsp;
+                    <%= link_to '>>>', entries_path(offset: @offset + 52) %>
+                    </h4>
                 </div>
             </div>
 
@@ -107,7 +131,7 @@
             <div class='monday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                    <%= @start_date.strftime("%d") %>
+                    <p class='date_text'><%= @start_date.strftime("%d") %></p>
                     </div>
                     <div class='day_container'>
                     <h1 class='days'>Monday</h1>
@@ -116,7 +140,7 @@
                 
                 <div class='entries_panel-days'>
                     <% @mon.each do |e| %>
-                        <p><%= e.content %></p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -136,7 +160,7 @@
             <div class='tuesday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                        <%= @start_date.advance(days: 1).strftime("%d") %>
+                        <p class='date_text'><%= @start_date.advance(days: 1).strftime("%d") %> </p>
                     </div>
                     <div class='day_container'>
                         <h1 class='days'>Tuesday</h1>
@@ -145,7 +169,7 @@
 
                 <div class='entries_panel-days'>
                     <% @tue.each do |e| %>
-                        <p><%= e.content %></p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -165,7 +189,7 @@
             <div class='wednesday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                        <%= @start_date.advance(days: 2).strftime("%d") %>
+                        <p class='date_text'><%= @start_date.advance(days: 2).strftime("%d") %> </p>
                     </div>
                     <div class='day_container'>
                         <h1 class='days'>Wednesday</h1>
@@ -174,7 +198,7 @@
 
                 <div class='entries_panel-days'>
                     <% @wed.each do |e| %>
-                        <p><%= e.content %></p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -195,7 +219,7 @@
             <div class='thursday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                        <%= @start_date.advance(days: 3).strftime("%d") %>
+                        <p class='date_text'><%= @start_date.advance(days: 3).strftime("%d") %></p>
                     </div>
                     <div class='day_container'>
                         <h1 class='days'>Thursday</h1>
@@ -204,7 +228,7 @@
 
                 <div class='entries_panel-days'>
                     <% @thu.each do |e| %>
-                        <p><%= e.content %></p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -224,7 +248,7 @@
             <div class='friday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                        <%= @start_date.advance(days: 4).strftime("%d") %>
+                        <p class='date_text'><%= @start_date.advance(days: 4).strftime("%d") %></p>
                     </div>
                     <div class='day_container'>
                         <h1 class='days'>Friday</h1>
@@ -233,7 +257,7 @@
 
                 <div class='entries_panel-days'>
                     <% @fri.each do |e| %>
-                        <p><%= e.content %></p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -253,7 +277,7 @@
             <div class='saturday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                        <%= @start_date.advance(days: 5).strftime("%d") %>
+                        <p class='date_text'><%= @start_date.advance(days: 5).strftime("%d") %></p>
                     </div>
                     <div class='day_container'>
                         <h1 class='days'>Saturday</h1>
@@ -262,7 +286,7 @@
 
                 <div class='entries_panel-days'>   
                     <% @sat.each do |e| %>
-                        <p><%= e.content %></p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -282,7 +306,7 @@
             <div class='sunday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                        <%= @start_date.advance(days: 6).strftime("%d") %>
+                        <p class='date_text'><%= @start_date.advance(days: 6).strftime("%d") %></p>
                     </div>
                     <div class='day_container'>
                         <h1 class='days'>Sunday</h1>
@@ -291,7 +315,7 @@
 
                 <div class='entries_panel-days'>
                     <% @sun.each do |e| %>
-                        <p><%= e.content %></p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -323,7 +347,7 @@
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'work-to-do'} %>
                     <% entries.each do |e| %>
-                    <p><%= e.content %> </p>
+                    <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -349,7 +373,7 @@
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'personal-to-do'} %>
                     <% entries.each do |e| %>
-                        <p><%= e.content %> </p>
+                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -374,7 +398,7 @@
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'idea'} %>
                     <% entries.each do |e| %>
-                    <p><%= e.content %> </p>
+                    <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 
@@ -400,7 +424,7 @@
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'note'} %>
                     <% entries.each do |e| %>
-                    <p><%= e.content %> </p>
+                    <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
                     <% end %>
                 </div>
 

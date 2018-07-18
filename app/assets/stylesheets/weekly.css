@@ -1,0 +1,214 @@
+html, body {
+    background-color: white;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 840px;
+    padding-right: 5px;
+}
+
+p {
+    font-size: 15px;
+    font-family: 'Gochi Hand', cursive;
+}
+
+nav {
+    text-align: right;
+    background-color: rgba(225, 224, 223);
+    height: 30px;
+}
+
+.left_panel {
+    width: 20%;
+    height: 800px;
+}
+
+.right_panel {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 800px;
+}
+
+.right_panel-top {
+    height: 130px;
+    display: flex;
+    flex-direction: row;
+}
+
+.top_right_panel-one {
+    display: flex;
+    flex-direction: row;
+    margin-left: 220px;
+}
+
+
+.date_panel {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.week_of_panel {
+    text-align: center;
+}
+
+.current_week_panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.left_arrow_panel, .right_arrow_panel {
+    margin: 50px;
+}
+
+.right_panel-top {
+    margin-bottom: 15px;
+}
+
+.right_panel-middle {
+    height: 650px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sunday_panel, .monday_panel, .tuesday_panel, .wednesday_panel, .thursday_panel, .friday_panel, .saturday_panel {
+    width: 14.5%;
+    background-color: #D5D4D4;
+    text-align: center;
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}    
+
+.goals_panel, .priorities_panel {
+    background-color: #D5D4D4;
+    margin: 10px;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 380px;
+    box-shadow: 10px 5px 5px gray;
+}
+
+
+.work-to-do_panel, .personal-to-do_panel, .ideas_panel, .notes_panel {
+    width: 25%;
+    height: 200px;
+    background-color: #D5D4D4;
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}   
+
+.entries_panel-goals, .entries_panel-priorities {
+    height: 250px;
+    margin-top: -50px;
+}
+
+
+.entries_panel-categories {
+    height: 150px; 
+}
+
+.entries_panel-days {
+    height: 350px;
+    margin-top: -80px;
+}
+
+.form_panel {
+    margin-bottom: 10px;
+}
+
+.right_panel-bottom {
+    height: 230px;
+    display: flex;
+    flex-direction: row;
+}    
+
+h1 {
+    font-family: 'Sigmar One', cursive;
+}    
+
+h2 {
+    font-family: 'Cutive', serif;
+}   
+
+h4 a {
+    text-decoration: none !important;
+    font-size: 30px;
+    color: gray;
+}
+
+.date_text {
+    font-size: 30px;
+    margin: 0 2px;
+}
+
+.to {
+    font-size: 25px;
+}
+  
+
+.month_text {
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 2px;
+
+}    
+
+.month_panel {
+    padding: -2px;
+    height: 40px; 
+    
+}    
+
+
+.day_word_panel {
+    border-bottom: 1px dashed gray;
+    display: flex;
+    flex-direction: row;
+    background-color: #EEECE8; 
+}
+
+.category_word_panel {
+    text-align: center;
+    border-bottom: 1px dashed gray;
+    background-color: #EEECE8;   
+}
+
+
+.days {
+    margin-top: -2px;
+    margin-bottom: -2px;
+    font-size: 20px;
+    text-align: right;
+}
+
+.category_text {
+    margin: 2px;
+    font-size: 25px;
+}
+
+.category_text-personal {
+    margin: 2px;
+    font-size: 23px;
+}
+
+.date_container {
+    margin: 0;    
+}
+
+.day_container {
+    margin-left: 20px;  
+}

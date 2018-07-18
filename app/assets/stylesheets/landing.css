@@ -1,0 +1,37 @@
+body {
+    background: url('background.jpg') center no-repeat;
+    background-size: cover;
+    height: 870px;
+}
+
+
+h1 {
+    font-size: 180px;
+    font-family: 'Merienda', cursive;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, .8);
+    text-align: left;
+}
+
+.field {
+    display: inline-block;
+}
+
+.actions {
+    display: inline-block; 
+}
+
+h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    margin-left: 300px;
+    color: rgba(0, 0, 0, .5);
+    text-align: left;
+
+}
+
+nav {
+    text-align: right;
+    background-color: rgba(225, 224, 223);
+    height: 30px;
+}

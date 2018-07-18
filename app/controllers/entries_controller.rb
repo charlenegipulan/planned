@@ -2,6 +2,7 @@ class EntriesController < ApplicationController
 
     def index
         @start_date = Date.today.beginning_of_week
+        @beg_month = Date.today.beginning_of_month
         @offset = params[:offset] ? params[:offset].to_i : 0
         @start_date = @start_date.advance(weeks: @offset)
         @end_date  = @start_date.advance(days: 6)
