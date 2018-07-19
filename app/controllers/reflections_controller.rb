@@ -1,12 +1,10 @@
 class ReflectionsController < ApplicationController
 
     def edit
-        @start_date = Date.today.beginning_of_week
-        date = params[:id]
-        date = date.to_date
-        date = date.beginning_of_month
-        @reflection = Reflection.find_by(month_date: @date)
-        @reflection = Reflection.create(user: current_user, month_date: date) if @reflection.nil?
+        @start_date = params[:id].to_date
+        @start_date = @start_date.beginning_of_month
+        @reflection = Reflection.find_by(month_date: @start_date)
+        @reflection = Reflection.create(user: current_user, month_date: @start_date) if @reflection.nil?
     end
 
     def update
@@ -16,7 +14,7 @@ class ReflectionsController < ApplicationController
     end
 
     def reflection_params
-        params.require(:reflection).permit(:top10, :learnings, :newthings, :people, :improvements, :progressions, :obstacles, :wrongs)
+        params.require(:reflection).permit(:top10, :learnings, :newthings, :people, :improvements, :progressions, :obstacles, :wrongs, :goals_achieved, :rewards_achieved)
     end
 
 

@@ -1,16 +1,22 @@
 <%= stylesheet_link_tag 'reflections.css' %>
 
 <nav>
-      <div>
-      <% if current_user %>
-        Welcome, <%= current_user.name %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
-      <% else %>
-        <%= link_to 'Sign Up', new_user_path %>
-      <% end %>
+
+    <div class='nav_content'>
+        <div class='arrow_panel'>
+            <%= link_to '⬅', entries_path %> 
+        </div>
+        <% if current_user %>
+            Welcome, <%= current_user.name %>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <div id='log-out-button'>
+                <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+            </div>
+        <% else %>
+            <%= link_to 'Sign Up', new_user_path %>
+        <% end %>
     </div>
-      </nav>
+</nav>
 
 
 <%= form_for(@reflection, remote: false) do |f| %>
@@ -20,10 +26,10 @@
     
     <div class='left_panel'>
 
-        <div class='category_panel'>
-            <h1 class='reflections_cat-text'> My top 10 achievements this month</h1>
-        </div>
         <div class='top_10_panel'>
+            <div class='category_panel'>
+                <h1 class='reflections_cat-text'> My top 10 achievements this month</h1>
+            </div>
             <%= text_area :reflection, :top10, class:'reflection-input' %>
         </div>
 
@@ -60,16 +66,16 @@
                 <h1 class='month_text'> <%= @start_date.strftime("%B")%> </h1>
             </div>
 
-            <div>
+            <div class='reflection_text-panel'>
                 <h1 class='reflections_text'> Reflections </h1>
             </div>
-                
 
         </div>
         
 
 
         <div class='checklist_text_panel'>
+            <hr>
             <h2> monthly checklist </h1>
             <hr>
         </div>
@@ -156,15 +162,28 @@
         <div class='middle_bottom_panel'>   
 
             <div class='goals_achieved_panel'>
-                <h2> Goals achieved </h2>
-                <hr>
+                <div>
+                    <h2> Goals achieved </h2>
+                    <hr>
+                </div>
+                <div>
+                    <%= text_area :reflection, :goals_achieved, class:'reflection-input' %>
+                </div>
             </div>
 
             <div class='rewards_achieved_panel'>
-                <h2> Rewards for achieving </h2>
-                <hr>
-
+                <div>
+                    <h2> Rewards for achieving </h2>
+                    <hr>
+                </div>
+                <div>
+                    <%= text_area :reflection, :rewards_achieved, class:'reflection-input' %>
+                </div>
             </div>
+        </div>
+
+        <div class='save_button_panel'>
+            <%= f.submit "Save Changes", class:"save_reflection-button"  %>
         </div>
 
     </div>
@@ -205,5 +224,5 @@
     </div>
         
 </div>
-<%= f.submit "Add Entry" %>
+
 <% end %>

@@ -1,8 +1,12 @@
+
 .flex-container {
     display: flex;
     flex-direction: row;
-    height: 840px;
-    padding-right: 5px;
+    height: 750px;
+    width: 1550px;
+    margin-left: 40px;
+    margin-top: 40px;
+    background-color: rgba(24, 24, 24, .1);
 }
 
 p {
@@ -10,23 +14,20 @@ p {
     font-family: 'Gochi Hand', cursive;
 }
 
-nav {
-    text-align: right;
-    background-color: rgb(225, 224, 223);
-    height: 30px;
-}
 
 .left_panel {
-    width: 20%;
+    width: 300px;;
     height: 800px;
+    margin-top: 10px;
 }
 
 .right_panel {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 1550px;
     height: 800px;
-    margin-left: 50px;
+    margin-left: 20px;
+    
 }
 
 .right_panel-top {
@@ -38,7 +39,8 @@ nav {
 .top_right_panel-one {
     display: flex;
     flex-direction: row;
-    margin-left: 220px;
+    margin-left: 50px;
+    margin-top: -20px;
 }
 
 
@@ -60,47 +62,51 @@ nav {
 }
 
 .left_arrow_panel, .right_arrow_panel {
-    margin: 50px;
+    margin: 0 50px;
     height: 60px;
 }
 
 .right_panel-top {
     margin-bottom: 15px;
+    
 }
 
 .right_panel-middle {
-    height: 650px;
+    height: 430px;
     display: flex;
     flex-direction: row;
+    padding-left: 40px;
+    padding-right: 10px;
 }
 
 .sunday_panel, .monday_panel, .tuesday_panel, .wednesday_panel, .thursday_panel, .friday_panel, .saturday_panel {
-    width: 220px;
-    background-color: rgba(253, 253, 253, .5);
+    width: 160px;
+    height: 290px;
     text-align: center;
-    margin: 3px;
+    margin: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }    
 
 .goals_panel, .priorities_panel {
-    background-color: rgba(253, 253, 253, .4);
-    margin-left: 50px;
+    /* background-color: rgba(24, 24, 24, .2); */
+    margin-left: 10px;
+    margin-right: -10px;
     margin-top: 20px;
     text-align: center; 
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
-    height: 350px;
+    height: 300px;
 }
 
 
 .work-to-do_panel, .personal-to-do_panel, .ideas_panel, .notes_panel {
-    width: 25%;
+    width: 260px;
     height: 200px;
-    background-color: rgba(253, 253, 253, .5);
-    margin: 10px;
+    ;
+    margin: 15px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -109,27 +115,31 @@ nav {
 
 .entries_panel-goals, .entries_panel-priorities {
     height: 250px;
-    margin-top: -50px;
+    width: 260px;
 }
 
 
 .entries_panel-categories {
-    height: 150px; 
+    height: 180px;
+    background-color: rgba(24, 24, 24, .1) 
 }
 
 .entries_panel-days {
-    height: 350px;
-    margin-top: -80px;
+    height: 200px;
+    margin-top: -10px;
+    background-color: rgba(24, 24, 24, .1)
 }
 
 .form_panel {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .right_panel-bottom {
+    justify-content: center;
     height: 230px;
     display: flex;
     flex-direction: row;
+    margin-top: -100px;
 }    
 
 h1 {
@@ -141,15 +151,14 @@ h2 {
 }   
 
 .week_of-text {
-    font-size: 20px;
-}
-
-
-h4 a {
-    text-decoration: none !important;
     font-size: 30px;
-    color: gray;
+    font-family: 'Nixie One', cursive;
+    color: #F9F9F9;
+    margin-bottom: 3px;
 }
+
+
+
 
 .date_text {
     font-size: 20px;
@@ -157,7 +166,8 @@ h4 a {
 }
 
 .current_date {
-    font-size: 20px;
+    font-size: 50px;
+    color: white;
 }
 
 .to {
@@ -166,44 +176,53 @@ h4 a {
   
 
 .month_text {
-    font-family: 'Walter Turncoat', cursive;
-    font-size: 40px;
-    text-align: center;
-    letter-spacing: 2px;
+    font-family: 'Merienda', cursive;
+    font-size: 70px;
+    letter-spacing: 5px;
     margin-top: 2px;
+    margin-left: 50px;
+    margin-bottom: -10px;
 
 }    
 
 .month_panel {
-    padding: -2px;
-    height: 40px; 
+    height: 100px; 
     
 }    
 
 
 .day_word_panel {
-    border-bottom: 1px dashed gray;
+    border-bottom: 3px dashed gray;
     display: flex;
     flex-direction: row;
-    background-color: #EEECE8; 
+
 }
 
 .category_word_panel {
     text-align: center;
     border-bottom: 1px dashed gray;
-    background-color: #EEECE8;   
 }
 
 .reflection_link {
-    font-size: 10px;
+    font-size: 30px;
+    font-family: 'Pacifico', cursive;
+    border: 1px solid white;
+    padding: 15px;
+    background-color: rgba(24, 24, 24, .4);
+}
+
+.reflection_link:hover {
+    background-color: rgba(24, 24, 24, .8);
+}
+
+.reflection_link a {
+    text-decoration: none !important;
+    color: white;
 }
 
 
 .days {
-    margin-top: -2px;
-    margin-bottom: -2px;
-    font-size: 20px;
-    text-align: right;
+    font-size: 10px;
 }
 
 .category_text {
@@ -213,7 +232,7 @@ h4 a {
 
 .category_text-personal {
     margin: 2px;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .date_container {
@@ -221,7 +240,9 @@ h4 a {
 }
 
 .day_container {
-    margin-left: 20px;  
+    margin-left: 2px;
+    width: 130px;
+    text-align: left;  
 }
 
 
@@ -229,7 +250,65 @@ h4 a {
     font-size: 15px;
 }
 
-.arrows {
-    margin-top: -35px;
+.arrows a{
+    text-decoration: none !important;
     font-size: 30px; 
+    color: #7C7C7C;
+}
+
+
+.submit_entry-button {
+    height: 30px;
+    width: 60px;
+    font-size: 10px;
+}
+
+.add-entry-btn {
+    background-color: rgba(80, 80, 80, .2);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+}
+
+.add-entry-btn:hover {
+    background-color: rgb(130, 164, 119);
+}
+
+#link_tos  {
+    text-decoration: none !important;
+    color: rgba(122, 124, 121, .4);
+    font-size: 10px;
+}
+
+#link_tos:hover {
+    color: #424242;
+}
+
+.goals-entry-text {
+    font-size: 30px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: #A75F4A;
+    background-color: rgba(228, 227, 134, .6);
+}
+
+.days-content {
+    font-family: 'Arima Madurai', cursive;
+    background-color: rgba(55, 89, 181, .4);
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 15px;
+}
+
+.to-do-content {
+    background-color: rgba(216, 167, 71, .7);
+    font-size: 26px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: 'Seaweed Script', cursive;
+
 }

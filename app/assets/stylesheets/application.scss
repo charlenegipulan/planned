@@ -14,18 +14,87 @@
  *= require_self
  */
 
-.link_tos a {
-    text-decoration: none !important;
-    font-size: 10px;
-    color: gray;
+ html, body, * {
+     box-sizing: border-box;
  }
 
  body {
-    background: image-url('background.jpg') center no-repeat;
+    background: url('background.jpg') center no-repeat;
     background-size: cover;
-    height: 870px;
+    height: 880px;
+    margin: 0;
+}
+
+nav {
+    font-family: 'Righteous', cursive;
+    color: white;
+    font-size: 15px;
+    background-color: rgba(24, 24, 24, .4);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+nav a {
+    text-decoration: none !important;
+}
+
+#nav-alerts, .log_in_panel {
+    flex: 4;
+}
+
+#nav-title {
+    flex: 1;
+}
+
+.log_in_panel {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.log_in_panel form {
+    height: 20px;
+    margin-right: 20px;
+}
+
+.log-in-button {
+    background-color:rgba(24, 24, 24, .2);
+    font-family: 'Righteous', cursive;
+    color: white;
+    font-size: 15px;
+    height: 30px;
+    margin-top: -25px;
+}
+
+.nav_text, .field, .actions, .sign_up_text {
+    text-decoration: none !important;
+    font-size: 15px;
+    margin: 0 auto;
+    font-family: 'Righteous', cursive;
+    color: white;
+}
+
+#sign-up-button, #log-out-button a   {
+    text-decoration: none;
+    color: white;
+    border: 1px white solid;
+    padding: 4.4px;
 }
 
 
+.alert {
+    background-color: rgba(24, 24, 24, .4);
+    width: 300px;
+}
 
+.alert.error {
+}
 
+.alert.success {
+
+}

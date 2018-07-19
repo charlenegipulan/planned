@@ -18,7 +18,9 @@
     <div class='left_panel'>
 
         <div class='month_panel'>
+            
            <h1 class='month_text'> <%= @start_date.strftime("%B")%> </h1>
+        
         </div>
 
         <div class='goals_panel'>
@@ -28,9 +30,14 @@
 
             <div class='entries_panel-goals'>
                 <% entries = @entries.select {|e| e.category.name == 'goal'} %>
-                <font size='15px'><% entries.each do |e| %></font>
-                <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
-                <% end %>
+                <font size='15px'>
+                    <% entries.each do |e| %>
+                        
+                        <p class='goals-entry-text'><%= e.content %>
+                        <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
+                    <% end %>
+                </font>
             </div>
 
             <div class='form_panel'>
@@ -38,9 +45,9 @@
                     <%= hidden_field_tag :offset, @offset %>
                     <%= hidden_field_tag :date, @start_date %>
                     <div>
-                        <%= f.text_field :content %>
+                        <%= f.text_field :content, class: 'entry_form' %>
                         <%= hidden_field_tag :category_id, @goal_id %>
-                        <%= f.submit "Add Entry" %>
+                        <%= f.submit "Add Entry", class: "add-entry-btn" %>
                     </div>
                 <% end %>
             </div>
@@ -54,7 +61,11 @@
             <div class='entries_panel-priorities'>
                 <% entries = @entries.select {|e| e.category.name == 'priority'} %>
                 <% entries.each do |e| %>
-                <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+
+                <p class='goals-entry-text'>
+                <%= e.content %> 
+                <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                 <% end %>
             </div>
 
@@ -65,7 +76,7 @@
                     <div>
                         <%= f.text_field :content %>
                         <%= hidden_field_tag :category_id, @priority_id %>
-                        <%= f.submit "Add Entry" %>
+                        <%= f.submit "Add Entry", class: "add-entry-btn" %>
                     </div>
                 <% end %>
             </div>
@@ -80,11 +91,11 @@
             <div class='top_right_panel-one'>
                 <div class='left_arrow_panel'>
                     <h4 class='arrows'>
-                    <%= link_to '<<<', entries_path(offset: @offset - 52) %>
+                    <%= link_to '←←←', entries_path(offset: @offset - 52) %>
                     &nbsp;&nbsp;
-                    <%= link_to '<<', entries_path(offset: @offset - 4) %>
+                    <%= link_to '←←', entries_path(offset: @offset - 4) %>
                     &nbsp;&nbsp;
-                    <%= link_to '<', entries_path(offset: @offset - 1) %>
+                    <%= link_to '←', entries_path(offset: @offset - 1) %>
                     </h4>
                 </div>
 
@@ -112,17 +123,17 @@
 
                 <div class='right_arrow_panel'>
                     <h4 class='arrows'>
-                    <%= link_to '>', entries_path(offset: @offset + 1) %>
+                    <%= link_to '→', entries_path(offset: @offset + 1) %>
                     &nbsp;&nbsp;
-                    <%= link_to '>>', entries_path(offset: @offset + 4) %>
+                    <%= link_to '→→', entries_path(offset: @offset + 4) %>
                     &nbsp;&nbsp;
-                    <%= link_to '>>>', entries_path(offset: @offset + 52) %>
+                    <%= link_to '→→→', entries_path(offset: @offset + 52) %>
                     </h4>
                 </div>
             </div>
 
             <div class='top_right_panel-two'>
-                <p class='reflection_link'><%= link_to 'Reflections', edit_reflection_path("#{@start_date}") %> </p>
+                <p class='reflection_link'><%= link_to 'Reflections', edit_reflection_path("#{@start_date}")%> </p>
             </div>
 
         </div>
@@ -134,19 +145,18 @@
             <div class='monday_panel'>
                 <div class='day_word_panel'>
                     <div class='date_container'>
-                    <p class='date_text'><%= @start_date.strftime("%d") %></p>
+                        <p class='date_text'><%= @start_date.strftime("%d") %></p>
                     </div>
                     <div class='day_container'>
-                    <h1 class='days'>Monday</h1>
+                        <h1 class='days'>Monday</h1>
                     </div>
                 </div>
                 
                 <div class='entries_panel-days'>
                     <% @mon.each do |e| %>
-                        <%= e.content %> 
-                        <p class='link_tos'>
-                        <%= link_to '✎', edit_entry_path(e, offset: @offset) %> 
-                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> 
+                        <p class='days-content'><%= e.content %> 
+                        <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> 
                         </p>
                     <% end %>
                 </div>
@@ -158,7 +168,7 @@
                     <div>
                         <%= f.text_field :content %>
                         <%= hidden_field_tag :category_id, @cal_cat_id %>
-                        <%= f.submit "Add Entry" %>
+                        <%= f.submit "Add Entry", class: "add-entry-btn" %>
                     </div>
                     <% end %>
                 </div>
@@ -176,7 +186,10 @@
 
                 <div class='entries_panel-days'>
                     <% @tue.each do |e| %>
-                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                        <p class='days-content'>
+                        <%= e.content %> 
+                        <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                     <% end %>
                 </div>
 
@@ -187,7 +200,7 @@
                             <div>
                                 <%= f.text_field :content %>
                                 <%= hidden_field_tag :category_id, @cal_cat_id %>
-                                <%= f.submit "Add Entry" %>
+                                <%= f.submit "Add Entry", class: "add-entry-btn" %>
                             </div>
                     <% end %>
                 </div>
@@ -205,7 +218,11 @@
 
                 <div class='entries_panel-days'>
                     <% @wed.each do |e| %>
-                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                        <p class='days-content'>
+                        <%= e.content %> 
+                        <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos'  %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos'  %> 
+                        </p>
                     <% end %>
                 </div>
 
@@ -216,7 +233,7 @@
                             <div>
                                 <%= f.text_field :content %>
                                 <%= hidden_field_tag :category_id, @cal_cat_id %>
-                                <%= f.submit "Add Entry" %>
+                                <%= f.submit "Add Entry", class: "add-entry-btn" %>
                             </div>
                     <% end %>
                 </div>
@@ -235,7 +252,9 @@
 
                 <div class='entries_panel-days'>
                     <% @thu.each do |e| %>
-                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                        <p class='days-content'>
+                        <%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                     <% end %>
                 </div>
 
@@ -246,7 +265,7 @@
                             <div>
                                 <%= f.text_field :content %>
                                 <%= hidden_field_tag :category_id, @cal_cat_id %>
-                                <%= f.submit "Add Entry" %>
+                                <%= f.submit "Add Entry", class: "add-entry-btn" %>
                             </div>
                     <% end %>
                 </div>
@@ -264,7 +283,10 @@
 
                 <div class='entries_panel-days'>
                     <% @fri.each do |e| %>
-                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                        <p class='days-content'>
+                        <%= e.content %> 
+                        <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                     <% end %>
                 </div>
 
@@ -275,7 +297,7 @@
                             <div>
                                 <%= f.text_field :content %>
                                 <%= hidden_field_tag :category_id, @cal_cat_id %>
-                                <%= f.submit "Add Entry" %>
+                                <%= f.submit "Add Entry", class: "add-entry-btn" %>
                             </div>
                     <% end %>
                 </div>
@@ -293,7 +315,10 @@
 
                 <div class='entries_panel-days'>   
                     <% @sat.each do |e| %>
-                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                        <p class='days-content'>
+                        <%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> 
+                        </p>
                     <% end %>
                 </div>
 
@@ -304,7 +329,7 @@
                             <div>
                                 <%= f.text_field :content %>
                                 <%= hidden_field_tag :category_id, @cal_cat_id %>
-                                <%= f.submit "Add Entry" %>
+                                <%= f.submit "Add Entry", class: "add-entry-btn" %>
                             </div>
                     <% end %>
                 </div>
@@ -322,7 +347,11 @@
 
                 <div class='entries_panel-days'>
                     <% @sun.each do |e| %>
-                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                        <p class='days-content'>
+                        <%= e.content %> 
+                        <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> 
+                        </p>
                     <% end %>
                 </div>
 
@@ -333,7 +362,7 @@
                             <div>
                                 <%= f.text_field :content %>
                                 <%= hidden_field_tag :category_id, @cal_cat_id %>
-                                <%= f.submit "Add Entry" %>
+                                <%= f.submit "Add Entry", class: "add-entry-btn" %>
                             </div>
                     <% end %>
                 </div>
@@ -354,23 +383,25 @@
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'work-to-do'} %>
                     <% entries.each do |e| %>
-                    <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                    <p class='to-do-content'>
+                    <%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                    <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                     <% end %>
                 </div>
 
-            <div class='form_panel'>
-                <%= form_for @entry do |f| %>
-                    <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %>
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= hidden_field_tag :category_id, @work_to_do_id %>
-                        <%= f.submit "Add Entry" %>
-                    </div>
-                <% end %>
-            </div>
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date %>
+                        <div>
+                            <%= f.text_field :content %>
+                            <%= hidden_field_tag :category_id, @work_to_do_id %>
+                            <%= f.submit "Add Entry", class: "add-entry-btn" %>
+                        </div>
+                    <% end %>
+                </div>
                 
-        </div>
+            </div>
 
             <div class='personal-to-do_panel'>
                 <div class='category_word_panel'>
@@ -380,46 +411,49 @@
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'personal-to-do'} %>
                     <% entries.each do |e| %>
-                        <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                        <p class='to-do-content'><%= e.content %> 
+                        <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                        <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                     <% end %>
                 </div>
-
-            <div class='form_panel'>
-                <%= form_for @entry do |f| %>
-                    <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %>
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= hidden_field_tag :category_id, @personal_to_do_id %>
-                        <%= f.submit "Add Entry" %>
-                    </div>
-                <% end %>
-            </div>
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date %>
+                        <div>
+                            <%= f.text_field :content %>
+                            <%= hidden_field_tag :category_id, @personal_to_do_id %>
+                            <%= f.submit "Add Entry", class: "add-entry-btn" %>
+                        </div>
+                    <% end %>
+                </div>
             </div>
 
             <div class='ideas_panel'>
                 <div class='category_word_panel'>
-                    <h2 class='category_text'> IDEAS </h2>
+                    <h2 class='category_text'>IDEAS</h2>
                 </div>
 
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'idea'} %>
                     <% entries.each do |e| %>
-                    <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                    <p class='to-do-content'>
+                    <%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                    <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                     <% end %>
                 </div>
 
-            <div class='form_panel'>
-                <%= form_for @entry do |f| %>
-                    <%= hidden_field_tag :offset, @offset %>
-                    <%= hidden_field_tag :date, @start_date %>
-                    <div>
-                        <%= f.text_field :content %>
-                        <%= hidden_field_tag :category_id, @idea_id %>
-                        <%= f.submit "Add Entry" %>
-                    </div>
-                <% end %>
-            </div>
+                <div class='form_panel'>
+                    <%= form_for @entry do |f| %>
+                        <%= hidden_field_tag :offset, @offset %>
+                        <%= hidden_field_tag :date, @start_date %>
+                        <div>
+                            <%= f.text_field :content %>
+                            <%= hidden_field_tag :category_id, @idea_id %>
+                            <%= f.submit "Add Entry", class: "add-entry-btn" %>
+                        </div>
+                    <% end %>
+                </div>
 
             </div>
 
@@ -431,7 +465,10 @@
                 <div class='entries_panel-categories'>
                     <% entries = @entries.select {|e| e.category.name == 'note'} %>
                     <% entries.each do |e| %>
-                    <p class='link_tos'><%= e.content %> <%= link_to '✎', edit_entry_path(e, offset: @offset) %> <%= link_to '╳', entry_path(e, offset: @offset), method: :delete %> </p>
+                    <p class='to-do-content'>
+                    <%= e.content %> 
+                    <%= link_to '✎', edit_entry_path(e, offset: @offset), id: 'link_tos' %> 
+                    <%= link_to '╳', entry_path(e, offset: @offset), method: :delete, id: 'link_tos' %> </p>
                     <% end %>
                 </div>
 
@@ -442,16 +479,15 @@
                         <div>
                             <%= f.text_field :content %>
                             <%= hidden_field_tag :category_id, @note_id %>
-                            <%= f.submit "Add Entry" %>
+                            <%= f.submit "Add Entry", class: "add-entry-btn" %>
                         </div>
-                     <% end %>
+                    <% end %>
                 </div>
             </div>
         </div>
 
 
     </div>
-
 
 
 </div>

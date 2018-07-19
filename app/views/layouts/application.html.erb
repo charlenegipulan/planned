@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fontdiner+Swanky" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
@@ -14,13 +15,52 @@
     <link href="https://fonts.googleapis.com/css?family=Walter+Turncoat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nixie+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
- 
+
+  <nav> 
+    <div id="nav-alerts">
+       <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"> <%= value %> </div>
+      <% end %>
+    </div>
+
+    <div id="nav-title">
+      Planned.
+    </div>
+
+    <div class='log_in_panel'>
+      <% if !current_user %>
+        <%= form_tag sessions_path do %>
+          <div class="field">
+            <%= label_tag :email %>
+            <%= text_field_tag :email, params[:email] %>
+          </div>
+
+          <div class="field">
+            <%= label_tag :password %> <%= password_field_tag :password %>
+          </div>
+
+          <div class="actions"><%= submit_tag "Log In", class: 'log-in-button' %></div>
+        <% end %>
+      <% end %>    
+
+      <%= link_to 'Sign Up', new_user_path, id: "sign-up-button" %>
+
+    </div>
+
+  </nav>
+
     <%= yield %>
   </body>
 </html>
