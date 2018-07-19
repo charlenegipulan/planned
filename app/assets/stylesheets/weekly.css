@@ -171,7 +171,8 @@ h2 {
 }
 
 .to {
-    font-size: 25px;
+    font-size: 45px;
+    color: white;
 }
   
 
@@ -201,6 +202,8 @@ h2 {
 .category_word_panel {
     text-align: center;
     border-bottom: 1px dashed gray;
+    background-color: rgba(252, 252, 252, .4);
+    padding-top: 5px;
 }
 
 .reflection_link {

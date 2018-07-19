@@ -33,6 +33,11 @@
        <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"> <%= value %> </div>
       <% end %>
+      <% if current_page?(controller: :reflections, action: :edit) %>
+        <div class='arrow_panel'>
+            <%= link_to '⬅', entries_path %> 
+        </div>
+      <% end %>
     </div>
 
     <div id="nav-title">
@@ -40,7 +45,9 @@
     </div>
 
     <div class='log_in_panel'>
-      <% if !current_user %>
+      <% if current_user %>
+        <%= link_to 'Log Out', logout_path, id: "sign-up-button" %>
+      <% else %>
         <%= form_tag sessions_path do %>
           <div class="field">
             <%= label_tag :email %>
@@ -53,9 +60,9 @@
 
           <div class="actions"><%= submit_tag "Log In", class: 'log-in-button' %></div>
         <% end %>
-      <% end %>    
+        <%= link_to 'Sign Up', new_user_path, id: "sign-up-button" %>
+      <% end %>
 
-      <%= link_to 'Sign Up', new_user_path, id: "sign-up-button" %>
 
     </div>
 

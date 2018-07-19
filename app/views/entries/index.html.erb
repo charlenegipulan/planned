@@ -1,16 +1,4 @@
-<%= stylesheet_link_tag 'weekly.css' %>
 
-<nav>
-    <div>
-      <% if current_user %>
-        Welcome, <%= current_user.name %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
-      <% else %>
-        <%= link_to 'Sign Up', new_user_path %>
-      <% end %>
-    </div>
-</nav>
 
 <div class='flex-container'>
 
