@@ -30,4 +30,14 @@ nav {
     height: 30px;
     margin-top: -15px;
     margin-right: 0 auto;
+    height: 40px;
+    padding: 10px;
+}
+
+.log_in_panel {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    text-align: right;
+    
 }

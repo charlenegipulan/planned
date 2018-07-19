@@ -13,7 +13,7 @@
       </nav>
 
 
-
+<%= form_for(@reflection, remote: false) do |f| %>
 <div class='flex-container'>
 
 
@@ -22,19 +22,9 @@
 
         <div class='category_panel'>
             <h1 class='reflections_cat-text'> My top 10 achievements this month</h1>
-            <div class='form_panel'>
-                <%= form_for @reflection do |f| %>
-                    <%= f.text_area :top10 %>
-                    <%= f.submit "Add Entry" %>
-                <% end %>
-            </div>
         </div>
-
-
         <div class='top_10_panel'>
-            
-            text 
-            text
+            <%= text_area :reflection, :top10, class:'reflection-input' %>
         </div>
 
 
@@ -42,8 +32,7 @@
             <h1 class='reflections_cat-text'> What I learned this month </h1>
         </div>
         <div class='learnings_panel'>
-            text 
-            text
+            <%= text_area :reflection, :learnings, class:'reflection-input' %>
         </div>
 
 
@@ -51,16 +40,15 @@
             <h1 class='reflections_cat-text'> New things I was introduced to </h1>
         </div>
         <div class='new_things_panel'>
-            text
-            text
+            <%= text_area :reflection, :newthings, class:'reflection-input' %>
         </div>
+
 
         <div class='category_panel'>
             <h1 class='reflections_cat-text'> People who I learned from and inspired me: </h1>
         </div>
         <div class='people_inspiration_panel'>
-            text
-            text
+            <%= text_area :reflection, :people, class:'reflection-input' %>
         </div>
 
     </div>
@@ -187,35 +175,35 @@
             <h1 class='reflections_cat-text'> What I can do to improve: </h1>
         </div>
         <div class='improvements_panel'>
-
-            text 
-            text
+            <%= text_area :reflection, :improvements, class:'reflection-input' %>
         </div>
+
 
         <div class='category_panel'>
             <h1 class='reflections_cat-text'> How did I progress: </h1>
         </div>
         <div class='progression_panel'>
-            test
-            test
+            <%= text_area :reflection, :progressions, class:'reflection-input' %>
         </div>
+
 
         <div class='category_panel'>
             <h1 class='reflections_cat-text'> My biggest obstacles:</h1>
         </div>
         <div class='obstacles_panel'>
-            test
-            test
+            <%= text_area :reflection, :obstacles, class:'reflection-input' %>
         </div>
+
 
         <div class='category_panel'>
             <h1 class='reflections_cat-text'> What went wrong: </h1>
         </div>
         <div class='wrongs_panel'>
-            test
-            test
+            <%= text_area :reflection, :wrongs, class:'reflection-input' %>
         </div>
 
     </div>
         
 </div>
+<%= f.submit "Add Entry" %>
+<% end %>
