@@ -46,7 +46,10 @@
 
     <div class='log_in_panel'>
       <% if current_user %>
+           Welcome, <%= current_user.name %>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
         <%= link_to 'Log Out', logout_path, id: "sign-up-button" %>
+
       <% else %>
         <%= form_tag sessions_path do %>
           <div class="field">

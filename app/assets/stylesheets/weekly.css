@@ -68,9 +68,10 @@ p {
 }
 
 .right_panel-top {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 20px;
 }
 
 .right_panel-middle {
@@ -300,7 +301,7 @@ h2 {
     margin-top: 2px;
     margin-bottom: 2px;
     color: #A75F4A;
-    background-color: rgba(228, 227, 134, .6);
+    background-color: rgba(228, 227, 134, .9);
 }
 
 .days-content {
@@ -312,7 +313,7 @@ h2 {
 }
 
 .to-do-content {
-    background-color: rgba(216, 167, 71, .7);
+    background-color: rgba(216, 167, 71, .9);
     font-size: 26px;
     margin-top: 2px;
     margin-bottom: 2px;
