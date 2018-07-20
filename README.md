@@ -1,24 +1,30 @@
-# README
+# Introduction
+### Planned . 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# Screenshots
+![screenshot](https://i.imgur.com/CqKufRc.jpg "Logo Title Text 1")
+![screenshot](https://i.imgur.com/hEVSlDZ.jpg "Logo Title Text 1")
 
-* Ruby version
+# Technologies Used
+1. HTML
+2. CSS
+3. Ruby on Rails
+4. PostgresQL
 
-* System dependencies
+# Getting Started
+For testing purposes:
 
-* Configuration
+email: dummy@email.com
+password: password123
 
-* Database creation
 
-* Database initialization
+[Trello board]( https://trello.com/b/6J3AfWRK/project-2-planned)
 
-* How to run the test suite
+[Deployed app](https://planned.herokuapp.com/)
 
-* Services (job queues, cache servers, search engines, etc.)
+# Unsolved Problems
 
-* Deployment instructions
-
-* ...
+# Future Ideas
+1. Add a toolbox that will let the user change colors, increase text size and highlight text
+2. Adding stickers

@@ -1,12 +1,14 @@
-<h1> Edit entry </h1>
 
-<div class='form_panel'>
-    <%= form_for @entry do |f| %>
-        <br>
-        <%= f.text_area :content %>
-        <%= hidden_field_tag :offset, @offset %>
-        <br>
-        <%= f.submit 'Update' %>
-    <% end %>
-    
+
+<div class="edit-container">
+    <h1 class="edit-entry-header"> Edit entry </h1>
+    <div class='form_panel-edit-entry'>
+        <%= form_for @entry do |f| %>
+            <br>
+            <%= f.text_area :content %>
+            <%= hidden_field_tag :offset, @offset %>
+            <br>
+            <%= f.submit 'Update', class:"save_reflection-button"  %>
+        <% end %>
+    </div>  
 </div>

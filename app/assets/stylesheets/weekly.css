@@ -39,8 +39,9 @@ p {
 .top_right_panel-one {
     display: flex;
     flex-direction: row;
-    margin-left: 50px;
+    margin-left: 100px;
     margin-top: -20px;
+    justify-content: right;
 }
 
 
@@ -68,7 +69,8 @@ p {
 
 .right_panel-top {
     margin-bottom: 15px;
-    
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .right_panel-middle {
@@ -225,7 +227,9 @@ h2 {
 
 
 .days {
-    font-size: 10px;
+    font-size: 15px;
+    font-family: 'Libre Baskerville', serif;
+    color: white;
 }
 
 .category_text {
@@ -245,7 +249,7 @@ h2 {
 .day_container {
     margin-left: 2px;
     width: 130px;
-    text-align: left;  
+    text-align: center;  
 }
 
 

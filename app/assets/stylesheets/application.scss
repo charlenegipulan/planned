@@ -36,7 +36,8 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 nav a {
@@ -88,7 +89,7 @@ nav a {
 
 
 .alert {
-    background-color: rgba(24, 24, 24, .4);
+    background-color: rgba(24, 24, 24, .1);
     width: 300px;
 }
 
@@ -97,4 +98,40 @@ nav a {
 
 .alert.success {
 
+}
+
+.arrow_panel a{
+    color: white;
+}
+
+.edit-container  {
+    background-color:rgba(24, 24, 24, .2);
+    text-align: center;
+    height: 250px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.edit-entry-header {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+.new-user-field {
+    display: block;
+    padding: 5px;
+    text-align: center;
+}
+
+.create-user-panel {
+    margin-top: -10px;
+}
+
+.labels {
+    margin-right: 110px;
+}
+
+.password-label {
+    margin-right: 85px;
 }

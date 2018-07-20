@@ -1,9 +1,7 @@
-
-
-h1 {
+.landing-title-text {
     font-size: 180px;
     font-family: 'Merienda', cursive;
-    margin-left: 370px;
+    margin-left: 390px;
     color: white;
     text-align: left;
 }
@@ -25,41 +23,3 @@ h3 {
     text-align: left;
 
 }
-
-/* nav {
-    text-align: right;
-    background-color: rgba(24, 24, 24, .5);
-    height: 30px;
-    margin-right: 0 auto;
-    height: 40px;
-} */
-
-/* .log_in_panel {
-    display: flex;
-    flex-direction: row;
-    padding-top: 10px;
-    justify-content: flex-end;
-    height: 40px;
-} */
-/* 
-.nav_text, .field, .actions, .sign_up_text {
-    text-decoration: none !important;
-    font-size: 15px;
-    margin: 0 auto;
-    font-family: 'Righteous', cursive;
-    color: white;
-}
-
-.sign_up_panel {
-    height: 40px;
-    padding-top: -10px;
-    margin: 0 10px;
-}
-
-#sign-up-button a {
-    text-decoration: none;
-    color: white;
-    border: 1px white solid;
-    padding: 4.4px;
-} */
-
