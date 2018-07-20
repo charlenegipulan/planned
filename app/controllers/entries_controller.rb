@@ -1,5 +1,7 @@
 class EntriesController < ApplicationController
 
+    before_action :authorize
+
     def index
         @start_date = Date.today.beginning_of_week
         @beg_month = Date.today.beginning_of_month

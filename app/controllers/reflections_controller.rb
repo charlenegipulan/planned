@@ -1,5 +1,7 @@
 class ReflectionsController < ApplicationController
 
+    before_action :authorize
+
     def edit
         @start_date = params[:id].to_date
         @start_date = @start_date.beginning_of_month
