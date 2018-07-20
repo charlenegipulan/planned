@@ -3,7 +3,7 @@ class ReflectionsController < ApplicationController
     def edit
         @start_date = params[:id].to_date
         @start_date = @start_date.beginning_of_month
-        @reflection = Reflection.find_by(month_date: @start_date)
+        @reflection = Reflection.find_by(user: current_user, month_date: @start_date)
         @reflection = Reflection.create(user: current_user, month_date: @start_date) if @reflection.nil?
     end
 
